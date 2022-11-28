@@ -21,7 +21,11 @@
 		E374459029349C0100ABBA5E /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = E374458F29349C0100ABBA5E /* HTTPMethod.swift */; };
 		E374459229349C2700ABBA5E /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E374459129349C2700ABBA5E /* ErrorResponse.swift */; };
 		E374459429349CA400ABBA5E /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E374459329349CA400ABBA5E /* UseCase.swift */; };
-		E37445972934EC9A00ABBA5E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37445962934EC9A00ABBA5E /* SearchViewController.swift */; };
+		E37445A12934F0F300ABBA5E /* SearchContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = E374459C2934F0F300ABBA5E /* SearchContract.swift */; };
+		E37445A22934F0F300ABBA5E /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E374459D2934F0F300ABBA5E /* SearchPresenter.swift */; };
+		E37445A32934F0F300ABBA5E /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E374459E2934F0F300ABBA5E /* SearchRouter.swift */; };
+		E37445A42934F0F300ABBA5E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E374459F2934F0F300ABBA5E /* SearchViewController.swift */; };
+		E37445A52934F0F300ABBA5E /* SearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37445A02934F0F300ABBA5E /* SearchInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,7 +61,11 @@
 		E374458F29349C0100ABBA5E /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		E374459129349C2700ABBA5E /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		E374459329349CA400ABBA5E /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
-		E37445962934EC9A00ABBA5E /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		E374459C2934F0F300ABBA5E /* SearchContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchContract.swift; sourceTree = "<group>"; };
+		E374459D2934F0F300ABBA5E /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
+		E374459E2934F0F300ABBA5E /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
+		E374459F2934F0F300ABBA5E /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		E37445A02934F0F300ABBA5E /* SearchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,7 +192,11 @@
 		E374459A2934EFF300ABBA5E /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				E37445962934EC9A00ABBA5E /* SearchViewController.swift */,
+				E374459C2934F0F300ABBA5E /* SearchContract.swift */,
+				E374459D2934F0F300ABBA5E /* SearchPresenter.swift */,
+				E374459E2934F0F300ABBA5E /* SearchRouter.swift */,
+				E374459F2934F0F300ABBA5E /* SearchViewController.swift */,
+				E37445A02934F0F300ABBA5E /* SearchInteractor.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -337,9 +349,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E37445872934997300ABBA5E /* NetworkService.swift in Sources */,
-				E37445972934EC9A00ABBA5E /* SearchViewController.swift in Sources */,
+				E37445A42934F0F300ABBA5E /* SearchViewController.swift in Sources */,
+				E37445A22934F0F300ABBA5E /* SearchPresenter.swift in Sources */,
 				E374459029349C0100ABBA5E /* HTTPMethod.swift in Sources */,
+				E37445A12934F0F300ABBA5E /* SearchContract.swift in Sources */,
+				E37445A52934F0F300ABBA5E /* SearchInteractor.swift in Sources */,
 				E374459429349CA400ABBA5E /* UseCase.swift in Sources */,
+				E37445A32934F0F300ABBA5E /* SearchRouter.swift in Sources */,
 				E374455C2934909F00ABBA5E /* IDNPreTest.xcdatamodeld in Sources */,
 				E37445522934909F00ABBA5E /* AppDelegate.swift in Sources */,
 				E374459229349C2700ABBA5E /* ErrorResponse.swift in Sources */,
