@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		E37445522934909F00ABBA5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37445512934909F00ABBA5E /* AppDelegate.swift */; };
-		E37445562934909F00ABBA5E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37445552934909F00ABBA5E /* ViewController.swift */; };
 		E374455C2934909F00ABBA5E /* IDNPreTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E374455A2934909F00ABBA5E /* IDNPreTest.xcdatamodeld */; };
 		E374455E293490A200ABBA5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E374455D293490A200ABBA5E /* Assets.xcassets */; };
 		E3744561293490A200ABBA5E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E374455F293490A200ABBA5E /* LaunchScreen.storyboard */; };
@@ -22,6 +21,7 @@
 		E374459029349C0100ABBA5E /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = E374458F29349C0100ABBA5E /* HTTPMethod.swift */; };
 		E374459229349C2700ABBA5E /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E374459129349C2700ABBA5E /* ErrorResponse.swift */; };
 		E374459429349CA400ABBA5E /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E374459329349CA400ABBA5E /* UseCase.swift */; };
+		E37445972934EC9A00ABBA5E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37445962934EC9A00ABBA5E /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +44,6 @@
 /* Begin PBXFileReference section */
 		E374454E2934909F00ABBA5E /* IDNPreTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IDNPreTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E37445512934909F00ABBA5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E37445552934909F00ABBA5E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E374455B2934909F00ABBA5E /* IDNPreTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = IDNPreTest.xcdatamodel; sourceTree = "<group>"; };
 		E374455D293490A200ABBA5E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E3744560293490A200ABBA5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,6 +57,7 @@
 		E374458F29349C0100ABBA5E /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		E374459129349C2700ABBA5E /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		E374459329349CA400ABBA5E /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
+		E37445962934EC9A00ABBA5E /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,13 +111,10 @@
 		E37445502934909F00ABBA5E /* IDNPreTest */ = {
 			isa = PBXGroup;
 			children = (
+				E374459B2934F00900ABBA5E /* Source */,
 				E37445842934996200ABBA5E /* Core */,
-				E37445512934909F00ABBA5E /* AppDelegate.swift */,
-				E37445552934909F00ABBA5E /* ViewController.swift */,
-				E374455D293490A200ABBA5E /* Assets.xcassets */,
-				E374455F293490A200ABBA5E /* LaunchScreen.storyboard */,
-				E3744562293490A200ABBA5E /* Info.plist */,
-				E374455A2934909F00ABBA5E /* IDNPreTest.xcdatamodeld */,
+				E37445982934EE2300ABBA5E /* Supporting Files */,
+				E37445992934EE3D00ABBA5E /* Resource */,
 			);
 			path = IDNPreTest;
 			sourceTree = "<group>";
@@ -156,6 +153,49 @@
 				E374459129349C2700ABBA5E /* ErrorResponse.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		E37445952934D8D400ABBA5E /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				E374459A2934EFF300ABBA5E /* Search */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		E37445982934EE2300ABBA5E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E374455F293490A200ABBA5E /* LaunchScreen.storyboard */,
+				E3744562293490A200ABBA5E /* Info.plist */,
+				E374455A2934909F00ABBA5E /* IDNPreTest.xcdatamodeld */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E37445992934EE3D00ABBA5E /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				E374455D293490A200ABBA5E /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		E374459A2934EFF300ABBA5E /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				E37445962934EC9A00ABBA5E /* SearchViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		E374459B2934F00900ABBA5E /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				E37445512934909F00ABBA5E /* AppDelegate.swift */,
+				E37445952934D8D400ABBA5E /* Feature */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,7 +337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E37445872934997300ABBA5E /* NetworkService.swift in Sources */,
-				E37445562934909F00ABBA5E /* ViewController.swift in Sources */,
+				E37445972934EC9A00ABBA5E /* SearchViewController.swift in Sources */,
 				E374459029349C0100ABBA5E /* HTTPMethod.swift in Sources */,
 				E374459429349CA400ABBA5E /* UseCase.swift in Sources */,
 				E374455C2934909F00ABBA5E /* IDNPreTest.xcdatamodeld in Sources */,
