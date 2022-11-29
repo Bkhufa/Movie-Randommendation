@@ -21,7 +21,7 @@ class SearchRouter: PresenterToRouterSearchProtocol {
        
         viewController.presenter.router = SearchRouter()
         viewController.presenter.view = viewController
-        viewController.presenter.interactor = SearchInteractor()
+        viewController.presenter.interactor = SearchInteractor(service: URLSessionNetworkService())
         viewController.presenter.interactor?.presenter = presenter
         
         return viewController

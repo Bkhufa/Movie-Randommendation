@@ -24,6 +24,8 @@ protocol ViewToPresenterSearchProtocol: AnyObject {
     var router: PresenterToRouterSearchProtocol? { get set }
     
     var movieData: Observable<[Movie]> { get }
+    
+    func search(with query: String)
 }
 
 
@@ -31,12 +33,13 @@ protocol ViewToPresenterSearchProtocol: AnyObject {
 protocol PresenterToInteractorSearchProtocol {
     
     var presenter: InteractorToPresenterSearchProtocol? { get set }
+    func fetchSearch(_ query: String)
 }
 
 
 // MARK: Interactor Output (Interactor -> Presenter)
 protocol InteractorToPresenterSearchProtocol {
-    
+    func setSearchResult(data: SearchResult)
 }
 
 

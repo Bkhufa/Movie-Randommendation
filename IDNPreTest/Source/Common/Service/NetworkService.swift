@@ -10,11 +10,11 @@ import Foundation
 import Foundation
 import RxSwift
 
-protocol NetworkServices {
+protocol NetworkService {
     func request<U: UseCase>(_ usecase: U) -> Observable<U.Response>
 }
 
-final class URLSessionNetworkService: NetworkServices {
+final class URLSessionNetworkService: NetworkService {
     
     private let session: URLSession
     

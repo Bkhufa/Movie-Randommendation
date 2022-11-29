@@ -11,7 +11,7 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
-final class MovieCollectionViewComponent: UIView, UICollectionViewDelegate {
+final class MovieCollectionViewComponent: UIView {
     
     private let disposeBag = DisposeBag()
     private let data: Observable<[Movie]>
@@ -73,8 +73,9 @@ final class MovieCollectionViewComponent: UIView, UICollectionViewDelegate {
     func setWillDisplayCell(action: @escaping ((IndexPath) -> Void)) {
         willDisplayCell = action
     }
-    
-    //MARK: - UICollectionViewDelegate
+}
+
+extension MovieCollectionViewComponent: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         didSelectCell?(indexPath)

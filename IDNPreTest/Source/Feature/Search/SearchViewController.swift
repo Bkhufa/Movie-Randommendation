@@ -108,5 +108,7 @@ class SearchResultViewController: UIViewController {
             make.trailing.leading.bottom.equalToSuperview()
             make.top.equalTo(resultLabel.snp.bottom).offset(10)
         }
+        
+        presenter.search(with: "Cinta")
     }
 }
