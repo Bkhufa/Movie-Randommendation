@@ -26,7 +26,8 @@ class MovieCell: UICollectionViewCell {
     
     lazy var movieTitle: UILabel = {
         let label = UILabel()
-        label.numberOfLines = 1
+        label.numberOfLines = 2
+        label.textAlignment = .center
         return label
     }()
     
@@ -46,6 +47,8 @@ class MovieCell: UICollectionViewCell {
         movieTitle.snp.makeConstraints { make in
             make.bottom.equalToSuperview().inset(10)
             make.centerX.equalToSuperview()
+            make.horizontalEdges.equalToSuperview()
+            make.height.equalTo(50)
         }
         moviePoster.snp.makeConstraints { make in
             make.leading.top.trailing.equalToSuperview()
