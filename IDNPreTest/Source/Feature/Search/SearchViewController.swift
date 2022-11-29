@@ -60,9 +60,21 @@ class SearchResultViewController: UIViewController {
     
     unowned var presenter: ViewToPresenterSearchProtocol
     
-    lazy var movieCollectionView: MovieCollectionViewComponent<[Movie]> = {
+    lazy var movieCollectionView: MovieCollectionViewComponent = {
         let view = MovieCollectionViewComponent(data: presenter.movieData)
         return view
+    }()
+    
+    lazy var resultLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Total Result"
+        return label
+    }()
+    
+    lazy var resultCount: UILabel = {
+        let label = UILabel()
+        label.text = "0"
+        return label
     }()
     
     init(presenter: ViewToPresenterSearchProtocol) {
@@ -76,14 +88,25 @@ class SearchResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemGray
         setupUI()
     }
     
     private func setupUI() {
         view.addSubview(movieCollectionView)
+        view.addSubview(resultLabel)
+        view.addSubview(resultCount)
+        
+        resultLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(80)
+            make.leading.equalToSuperview().inset(10)
+        }
+        resultCount.snp.makeConstraints { make in
+            make.centerY.equalTo(resultLabel.snp.centerY)
+            make.trailing.equalToSuperview().inset(10)
+        }
         movieCollectionView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.trailing.leading.bottom.equalToSuperview()
+            make.top.equalTo(resultLabel.snp.bottom).offset(10)
         }
     }
 }

@@ -11,10 +11,10 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
-final class MovieCollectionViewComponent<T: Sequence>: UIView, UICollectionViewDelegate {
+final class MovieCollectionViewComponent: UIView, UICollectionViewDelegate {
     
     private let disposeBag = DisposeBag()
-    private let data: Observable<T>
+    private let data: Observable<[Movie]>
     
     private var didSelectCell: ((IndexPath) -> Void)?
     private var willDisplayCell: ((IndexPath) -> Void)?
@@ -23,7 +23,7 @@ final class MovieCollectionViewComponent<T: Sequence>: UIView, UICollectionViewD
         let width = UIScreen.main.bounds.width / 2 - 15
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: width, height: width)
+        layout.itemSize = CGSize(width: width, height: width * 2)
         layout.minimumLineSpacing = 10
         layout.minimumInteritemSpacing = 2
         
@@ -34,7 +34,7 @@ final class MovieCollectionViewComponent<T: Sequence>: UIView, UICollectionViewD
         return collectionView
     }()
     
-    init(data: Observable<T>) {
+    init(data: Observable<[Movie]>) {
         self.data = data
         super.init(frame: .zero)
         setupCollectionView()
@@ -61,7 +61,7 @@ final class MovieCollectionViewComponent<T: Sequence>: UIView, UICollectionViewD
         collectionView.rx.setDelegate(self).disposed(by: disposeBag)
         
         data.bind(to: collectionView.rx.items(cellIdentifier: MovieCell.identifier, cellType: MovieCell.self)) { indexPath, item, cell in
-            //                cell.bindView(with: cat)
+            cell.bindView(with: item)
         }
         .disposed(by: disposeBag)
     }
