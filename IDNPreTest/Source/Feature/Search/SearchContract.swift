@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxSwift
 
 
 // MARK: View Output (Presenter -> View)
@@ -16,11 +17,13 @@ protocol PresenterToViewSearchProtocol {
 
 
 // MARK: View Input (View -> Presenter)
-protocol ViewToPresenterSearchProtocol {
+protocol ViewToPresenterSearchProtocol: AnyObject {
     
     var view: PresenterToViewSearchProtocol? { get set }
     var interactor: PresenterToInteractorSearchProtocol? { get set }
     var router: PresenterToRouterSearchProtocol? { get set }
+    
+    var movieData: Observable<[Movie]> { get }
 }
 
 
