@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import RxSwift
 
-class SearchResultViewController: UIViewController {
+final class SearchResultViewController: UIViewController {
     
     unowned var presenter: ViewToPresenterSearchProtocol
     let disposeBag = DisposeBag()
@@ -58,6 +58,7 @@ class SearchResultViewController: UIViewController {
     }
     
     private func setupUI() {
+        view.backgroundColor = .white
         view.addSubview(movieCollectionView)
         view.addSubview(resultLabel)
         view.addSubview(resultCount)

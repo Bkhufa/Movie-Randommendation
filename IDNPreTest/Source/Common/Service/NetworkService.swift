@@ -38,8 +38,6 @@ final class URLSessionNetworkService: NetworkService {
                     return observer.onError(ErrorResponse.invalidResponse)
                 }
                 
-                print(response.url)
-                
                 guard let data = data else {
                     return observer.onError(ErrorResponse.noData)
                 }

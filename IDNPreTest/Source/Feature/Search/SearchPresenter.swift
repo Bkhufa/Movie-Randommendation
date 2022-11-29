@@ -33,9 +33,15 @@ final class SearchPresenter: ViewToPresenterSearchProtocol {
         _error.asObservable()
     }
     
+    var randomWords: Observable<[PartOfSpeech: String]> {
+        _randomWords.asObservable()
+    }
+    
     private let _searchQuery: BehaviorRelay<String> = .init(value: "")
     private let _searchResult: BehaviorRelay<SearchResult> = .init(value: SearchResult(movies: [], totalResults: "0"))
     private let _error: PublishRelay<Error?> = .init()
+    private var _randomWords: PublishRelay<[PartOfSpeech: String]> = .init()
+    private var randomWord = [PartOfSpeech:String]()
     private let disposeBag = DisposeBag()
     private var currentPage: Int = 1
     
@@ -48,10 +54,14 @@ final class SearchPresenter: ViewToPresenterSearchProtocol {
     }
     
     func displayMoreMovie(displayIndex: Int) {
-        if displayIndex == _searchResult.value.movies.count - 2 {
+        if displayIndex == _searchResult.value.movies.count - 1 {
             interactor?.fetchSearch(_searchQuery.value, page: currentPage)
             currentPage += 1
         }
+    }
+    
+    func fetchRandomWords() {
+        interactor?.fetchRandomWords()
     }
     
     private func subscribeToSearchQuery() {
@@ -80,5 +90,15 @@ extension SearchPresenter: InteractorToPresenterSearchProtocol {
     
     func fetchFailed(error: Error?) {
         _error.accept(error)
+    }
+    
+    func appendRandomWords(wordType: PartOfSpeech, word: String?) {
+        guard let word = word else { return }
+        let queue = DispatchQueue(label: "com.bryankhufa.IDNPreTest.randomWord")
+        queue.sync {
+            randomWord[wordType] = word
+        }
+        _randomWords.accept(randomWord)
+        print(randomWord)
     }
 }

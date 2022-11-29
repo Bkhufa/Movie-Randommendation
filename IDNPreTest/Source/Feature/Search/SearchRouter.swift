@@ -14,7 +14,6 @@ class SearchRouter: PresenterToRouterSearchProtocol {
     // MARK: Static methods
     static func createModule() -> UIViewController {
         
-        
         let presenter: ViewToPresenterSearchProtocol & InteractorToPresenterSearchProtocol = SearchPresenter()
         
         let viewController = SearchViewController(presenter: presenter)
