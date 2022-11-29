@@ -22,7 +22,7 @@ class SearchInteractor: PresenterToInteractorSearchProtocol {
     }
     
     func fetchSearch(_ query: String) {
-        if query.isEmpty {
+        if query.trimmingCharacters(in: .whitespaces).isEmpty {
             return
         }
         let usecase = SearchUseCase(query: query, page: 1)

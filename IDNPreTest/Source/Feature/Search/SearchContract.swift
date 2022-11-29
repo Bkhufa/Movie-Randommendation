@@ -24,6 +24,7 @@ protocol ViewToPresenterSearchProtocol: AnyObject {
     var router: PresenterToRouterSearchProtocol? { get set }
     
     var movieData: Observable<[Movie]> { get }
+    var resultCount: Observable<String> { get }
     
     func setSearchQuery(query: String)
 }

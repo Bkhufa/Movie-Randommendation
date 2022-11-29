@@ -25,7 +25,8 @@ class SearchUseCase: UseCase {
         [
             "apikey": "8a5ee4d8",
             "s": "\(query)",
-            "page": "\(page)"
+            "page": "\(page)",
+            "type": "movie"
         ]
     }
     

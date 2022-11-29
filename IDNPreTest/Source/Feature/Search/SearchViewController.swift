@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class SearchViewController: UIViewController {
     
@@ -60,6 +61,7 @@ extension SearchViewController: UISearchResultsUpdating {
 class SearchResultViewController: UIViewController {
     
     unowned var presenter: ViewToPresenterSearchProtocol
+    let disposeBag = DisposeBag()
     
     lazy var movieCollectionView: MovieCollectionViewComponent = {
         let view = MovieCollectionViewComponent(data: presenter.movieData)
@@ -90,6 +92,7 @@ class SearchResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupRx()
     }
     
     private func setupUI() {
@@ -109,5 +112,11 @@ class SearchResultViewController: UIViewController {
             make.trailing.leading.bottom.equalToSuperview()
             make.top.equalTo(resultLabel.snp.bottom).offset(10)
         }
+    }
+    
+    private func setupRx() {
+        presenter.resultCount
+            .bind(to: resultCount.rx.text)
+            .disposed(by: disposeBag)
     }
 }

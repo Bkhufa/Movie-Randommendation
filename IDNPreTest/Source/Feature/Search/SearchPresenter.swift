@@ -18,31 +18,45 @@ class SearchPresenter: ViewToPresenterSearchProtocol {
     var router: PresenterToRouterSearchProtocol?
     
     var movieData: Observable<[Movie]> {
-        _movieData.asObservable()
+        _searchResult.map { searchResult in
+            searchResult.movies
+        }
+    }
+    
+    var resultCount: Observable<String> {
+        _searchResult.map { searchResult in
+            searchResult.totalResults
+        }
     }
     
     private let disposeBag = DisposeBag()
-    private let _movieData: BehaviorRelay<[Movie]> = .init(value: [])
     private let _searchQuery: PublishRelay<String> = .init()
+    private let _searchResult: PublishRelay<SearchResult> = .init()
     
     init() {
+        setupRx()
+    }
+    
+    func setSearchQuery(query: String) {
+        _searchQuery.accept(query)
+    }
+    
+    private func setupRx() {
         _searchQuery
             .distinctUntilChanged()
+            .skip(1)
             .throttle(.milliseconds(500), scheduler: MainScheduler.asyncInstance)
             .subscribe { [weak self] query in
                 self?.interactor?.fetchSearch(query)
             }
             .disposed(by: disposeBag)
-    }
-    
-    func setSearchQuery(query: String) {
-        _searchQuery.accept(query)
+
     }
 }
 
 extension SearchPresenter: InteractorToPresenterSearchProtocol {
     
     func setSearchResult(data: SearchResult) {
-        _movieData.accept(data.movies)
+        _searchResult.accept(data)
     }
 }
