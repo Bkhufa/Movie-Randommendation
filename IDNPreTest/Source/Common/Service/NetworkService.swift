@@ -49,7 +49,14 @@ final class URLSessionNetworkService: NetworkService {
                     observer.onNext(response)
                     observer.onCompleted()
                 } catch {
-                    observer.onError(ErrorResponse.serializationError)
+                    let decoder = JSONDecoder()
+                    decoder.keyDecodingStrategy = .convertFromSnakeCase
+                    let error = try? decoder.decode(MovieError.self, from: data)
+                    guard let error = error else {
+                        observer.onError(ErrorResponse.serializationError)
+                        return
+                    }
+                    observer.onError(error)
                 }
             }
             task.resume()

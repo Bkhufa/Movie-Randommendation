@@ -29,8 +29,13 @@ final class SearchPresenter: ViewToPresenterSearchProtocol {
         }
     }
     
+    var error: Observable<Error?> {
+        _error.asObservable()
+    }
+    
     private let _searchQuery: BehaviorRelay<String> = .init(value: "")
     private let _searchResult: BehaviorRelay<SearchResult> = .init(value: SearchResult(movies: [], totalResults: "0"))
+    private let _error: PublishRelay<Error?> = .init()
     private let disposeBag = DisposeBag()
     private var currentPage: Int = 1
     
@@ -71,5 +76,9 @@ extension SearchPresenter: InteractorToPresenterSearchProtocol {
         let appendedMovies = _searchResult.value.movies + data.movies
         let searchResult = SearchResult(movies: appendedMovies, totalResults: _searchResult.value.totalResults)
         _searchResult.accept(searchResult)
+    }
+    
+    func fetchFailed(error: Error?) {
+        _error.accept(error)
     }
 }

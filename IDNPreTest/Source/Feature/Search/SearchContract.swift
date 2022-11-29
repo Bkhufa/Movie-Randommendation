@@ -25,6 +25,7 @@ protocol ViewToPresenterSearchProtocol: AnyObject {
     
     var movieData: Observable<[Movie]> { get }
     var resultCount: Observable<String> { get }
+    var error: Observable<Error?> { get }
     
     func setSearchQuery(query: String)
     func displayMoreMovie(displayIndex: Int)
@@ -45,6 +46,7 @@ protocol InteractorToPresenterSearchProtocol {
     
     func setSearchResult(data: SearchResult)
     func appendSearchResult(data: SearchResult)
+    func fetchFailed(error: Error?)
 }
 
 

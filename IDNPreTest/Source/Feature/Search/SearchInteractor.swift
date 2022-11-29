@@ -29,13 +29,14 @@ final class SearchInteractor: PresenterToInteractorSearchProtocol {
         service.request(usecase)
             .observe(on: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
             .subscribe(onNext: { [weak self] response in
+                self?.presenter?.fetchFailed(error: nil)
                 if page == 1 {
                     self?.presenter?.setSearchResult(data: response)
                     return
                 }
                 self?.presenter?.appendSearchResult(data: response)
-            }, onError: { error in
-                print("lala error", error)
+            }, onError: { [weak self] error in
+                self?.presenter?.fetchFailed(error: error)
             })
             .disposed(by: disposeBag)
         

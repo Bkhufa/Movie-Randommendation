@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E35B3870293612AD007FD203 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E35B386F293612AD007FD203 /* Kingfisher */; };
 		E35B3872293625D0007FD203 /* SearchUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35B3871293625D0007FD203 /* SearchUsecase.swift */; };
+		E36B2F5E293674740048711E /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B2F5D293674740048711E /* SearchResultViewController.swift */; };
 		E37445522934909F00ABBA5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37445512934909F00ABBA5E /* AppDelegate.swift */; };
 		E374455C2934909F00ABBA5E /* IDNPreTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E374455A2934909F00ABBA5E /* IDNPreTest.xcdatamodeld */; };
 		E374455E293490A200ABBA5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E374455D293490A200ABBA5E /* Assets.xcassets */; };
@@ -53,6 +54,7 @@
 
 /* Begin PBXFileReference section */
 		E35B3871293625D0007FD203 /* SearchUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUsecase.swift; sourceTree = "<group>"; };
+		E36B2F5D293674740048711E /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		E374454E2934909F00ABBA5E /* IDNPreTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IDNPreTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E37445512934909F00ABBA5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E374455B2934909F00ABBA5E /* IDNPreTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = IDNPreTest.xcdatamodel; sourceTree = "<group>"; };
@@ -219,11 +221,12 @@
 		E374459A2934EFF300ABBA5E /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				E3E6927929350E3B0045E1DE /* Component */,
+				E3E6927929350E3B0045E1DE /* CollectionView */,
 				E374459C2934F0F300ABBA5E /* SearchContract.swift */,
 				E374459D2934F0F300ABBA5E /* SearchPresenter.swift */,
 				E374459E2934F0F300ABBA5E /* SearchRouter.swift */,
 				E374459F2934F0F300ABBA5E /* SearchViewController.swift */,
+				E36B2F5D293674740048711E /* SearchResultViewController.swift */,
 				E37445A02934F0F300ABBA5E /* SearchInteractor.swift */,
 			);
 			path = Search;
@@ -248,13 +251,13 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		E3E6927929350E3B0045E1DE /* Component */ = {
+		E3E6927929350E3B0045E1DE /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
 				E3E6927C293516F00045E1DE /* MovieCollectionView.swift */,
 				E3E6927E2935191B0045E1DE /* MovieCell.swift */,
 			);
-			path = Component;
+			path = CollectionView;
 			sourceTree = "<group>";
 		};
 		E3E6928029351ABF0045E1DE /* Domain */ = {
@@ -430,6 +433,7 @@
 				E374459229349C2700ABBA5E /* ErrorResponse.swift in Sources */,
 				E35B3872293625D0007FD203 /* SearchUsecase.swift in Sources */,
 				E3E6927D293516F00045E1DE /* MovieCollectionView.swift in Sources */,
+				E36B2F5E293674740048711E /* SearchResultViewController.swift in Sources */,
 				E3E6928329351AEF0045E1DE /* SearchResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
