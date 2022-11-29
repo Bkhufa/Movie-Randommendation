@@ -10,11 +10,11 @@ import Foundation
 import Foundation
 import RxSwift
 
-protocol NetworkServices {
+protocol NetworkService {
     func request<U: UseCase>(_ usecase: U) -> Observable<U.Response>
 }
 
-final class URLSessionNetworkService: NetworkServices {
+final class URLSessionNetworkService: NetworkService {
     
     private let session: URLSession
     
@@ -38,6 +38,8 @@ final class URLSessionNetworkService: NetworkServices {
                     return observer.onError(ErrorResponse.invalidResponse)
                 }
                 
+                print(response.url)
+                
                 guard let data = data else {
                     return observer.onError(ErrorResponse.noData)
                 }
@@ -47,7 +49,14 @@ final class URLSessionNetworkService: NetworkServices {
                     observer.onNext(response)
                     observer.onCompleted()
                 } catch {
-                    observer.onError(ErrorResponse.serializationError)
+                    let decoder = JSONDecoder()
+                    decoder.keyDecodingStrategy = .convertFromSnakeCase
+                    let error = try? decoder.decode(MovieError.self, from: data)
+                    guard let error = error else {
+                        observer.onError(ErrorResponse.serializationError)
+                        return
+                    }
+                    observer.onError(error)
                 }
             }
             task.resume()

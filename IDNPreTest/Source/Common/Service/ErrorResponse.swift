@@ -13,3 +13,10 @@ enum ErrorResponse: Error {
     case noData
     case serializationError
 }
+
+struct MovieError: Decodable, Error {
+    let error: String
+    enum CodingKeys: String, CodingKey {
+        case error = "Error"
+    }
+}
