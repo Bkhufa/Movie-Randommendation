@@ -18,17 +18,17 @@ final class SearchViewController: UIViewController {
     private let disposeBag = DisposeBag()
     
     lazy var nounButton: WordButton = {
-        let button = WordButton(wordType: .noun)
+        let button = WordButton(wordType: PartOfSpeech.noun)
         return button
     }()
     
     lazy var verbButton: WordButton = {
-        let button = WordButton(wordType: .verb)
+        let button = WordButton(wordType: PartOfSpeech.verb)
         return button
     }()
     
     lazy var adjectiveButton: WordButton = {
-        let button = WordButton(wordType: .adjective)
+        let button = WordButton(wordType: PartOfSpeech.adjective)
         return button
     }()
     
@@ -64,7 +64,6 @@ final class SearchViewController: UIViewController {
         setupViewUI()
         setupSearch()
         setupRx()
-        searchController.searchBar.text = "Transformers"
         presenter.fetchRandomWords()
     }
     
@@ -99,12 +98,21 @@ final class SearchViewController: UIViewController {
             DispatchQueue.main.async {
                 if let nounWord = dictionary[PartOfSpeech.noun] {
                     self?.nounButton.setWord(word: nounWord)
+                    self?.nounButton.setAction(action: {
+                        self?.searchController.searchBar.text = nounWord
+                    })
                 }
                 if let verbWord = dictionary[PartOfSpeech.verb] {
                     self?.verbButton.setWord(word: verbWord)
+                    self?.verbButton.setAction(action: {
+                        self?.searchController.searchBar.text = verbWord
+                    })
                 }
                 if let adjWord = dictionary[PartOfSpeech.adjective] {
                     self?.adjectiveButton.setWord(word: adjWord)
+                    self?.adjectiveButton.setAction(action: {
+                        self?.searchController.searchBar.text = adjWord
+                    })
                 }
             }
         }
