@@ -44,7 +44,7 @@ final class SearchViewController: UIViewController {
     
     lazy var instructionLabel: UILabel = {
         let label = UILabel()
-        label.text = "We have provided you 3 randomized words below. Try tapping them to instantly search new movies with those title!"
+        label.text = "We have provided you 3 randomized words below. Try tapping them to instantly put it the search above. Go explore new movies with randomized title!"
         label.numberOfLines = 0
         return label
     }()
@@ -68,7 +68,7 @@ final class SearchViewController: UIViewController {
     }
     
     private func setupViewUI() {
-        title = "Search Movies"
+        title = "🎲 Randommendation"
         
         view.backgroundColor = .white
         navigationController?.navigationBar.prefersLargeTitles = true

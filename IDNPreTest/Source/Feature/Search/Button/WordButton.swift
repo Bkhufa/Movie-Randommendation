@@ -15,7 +15,6 @@ final class WordButton: UIView {
     
     lazy var label: UILabel = {
         let label = UILabel()
-        label.text = "Noun"
         return label
     }()
     

@@ -54,7 +54,7 @@ final class SearchPresenter: ViewToPresenterSearchProtocol {
     }
     
     func displayMoreMovie(displayIndex: Int) {
-        if displayIndex == _searchResult.value.movies.count - 2 {
+        if displayIndex == _searchResult.value.movies.count - 1 {
             interactor?.fetchSearch(_searchQuery.value, page: currentPage)
             currentPage += 1
         }
