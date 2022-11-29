@@ -25,7 +25,7 @@ protocol ViewToPresenterSearchProtocol: AnyObject {
     
     var movieData: Observable<[Movie]> { get }
     
-    func search(with query: String)
+    func setSearchQuery(query: String)
 }
 
 

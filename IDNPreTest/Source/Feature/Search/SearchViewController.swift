@@ -39,6 +39,7 @@ class SearchViewController: UIViewController {
     }
     
     private func setupSearch() {
+        searchController.searchResultsUpdater = self
         navigationItem.searchController = searchController
     }
 }
@@ -51,7 +52,7 @@ extension SearchViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         guard let query = searchController.searchBar.text else { return }
-        print(query)
+        presenter.setSearchQuery(query: query)
     }
 }
 
@@ -108,7 +109,5 @@ class SearchResultViewController: UIViewController {
             make.trailing.leading.bottom.equalToSuperview()
             make.top.equalTo(resultLabel.snp.bottom).offset(10)
         }
-        
-        presenter.search(with: "Cinta")
     }
 }

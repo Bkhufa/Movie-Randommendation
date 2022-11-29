@@ -41,7 +41,6 @@ class MovieCell: UICollectionViewCell {
     }
     
     private func setupUI() {
-        
         contentView.addSubview(moviePoster)
         contentView.addSubview(movieTitle)
         movieTitle.snp.makeConstraints { make in

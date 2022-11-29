@@ -22,11 +22,14 @@ class SearchInteractor: PresenterToInteractorSearchProtocol {
     }
     
     func fetchSearch(_ query: String) {
+        if query.isEmpty {
+            return
+        }
         let usecase = SearchUseCase(query: query, page: 1)
         service.request(usecase)
-            .observe(on: MainScheduler.asyncInstance)
+            .observe(on: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
             .subscribe(onNext: { [weak self] response in
-                print("lala response", response)
+                print("lala response")
                 self?.presenter?.setSearchResult(data: response)
             }, onError: { error in
                 print("lala error", error)

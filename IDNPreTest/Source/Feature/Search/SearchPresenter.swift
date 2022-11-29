@@ -21,10 +21,22 @@ class SearchPresenter: ViewToPresenterSearchProtocol {
         _movieData.asObservable()
     }
     
+    private let disposeBag = DisposeBag()
     private let _movieData: BehaviorRelay<[Movie]> = .init(value: [])
+    private let _searchQuery: PublishRelay<String> = .init()
     
-    func search(with query: String) {
-        interactor?.fetchSearch(query)
+    init() {
+        _searchQuery
+            .distinctUntilChanged()
+            .throttle(.milliseconds(500), scheduler: MainScheduler.asyncInstance)
+            .subscribe { [weak self] query in
+                self?.interactor?.fetchSearch(query)
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    func setSearchQuery(query: String) {
+        _searchQuery.accept(query)
     }
 }
 
