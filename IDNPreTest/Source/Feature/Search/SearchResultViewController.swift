@@ -58,6 +58,7 @@ final class SearchResultViewController: UIViewController {
     }
     
     private func setupUI() {
+        view.backgroundColor = .white
         view.addSubview(movieCollectionView)
         view.addSubview(resultLabel)
         view.addSubview(resultCount)

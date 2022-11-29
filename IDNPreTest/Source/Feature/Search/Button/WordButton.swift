@@ -11,7 +11,7 @@ import SnapKit
 
 final class WordButton: UIView {
     
-    let action: (() -> Void)?
+    var action: (() -> Void)?
     
     lazy var label: UILabel = {
         let label = UILabel()
@@ -29,10 +29,9 @@ final class WordButton: UIView {
     }()
     
     
-    init(wordType: String, action: (() -> Void)?) {
-        self.action = action
+    init(wordType: PartOfSpeech) {
         super.init(frame: .zero)
-        label.text = wordType
+        label.text = wordType.rawValue.capitalized
         setupView()
     }
     
@@ -63,6 +62,10 @@ final class WordButton: UIView {
     
     func setWord(word: String) {
         button.setTitle(word, for: .normal)
+    }
+    
+    func setAction(action: (() -> Void)?) {
+        self.action = action
     }
     
     @objc private func onButtonTapped() {

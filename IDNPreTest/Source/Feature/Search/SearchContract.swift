@@ -26,9 +26,11 @@ protocol ViewToPresenterSearchProtocol: AnyObject {
     var movieData: Observable<[Movie]> { get }
     var resultCount: Observable<String> { get }
     var error: Observable<Error?> { get }
+    var randomWords: Observable<[PartOfSpeech:String]> { get }
     
     func setSearchQuery(query: String)
     func displayMoreMovie(displayIndex: Int)
+    func fetchRandomWords()
 }
 
 
@@ -38,6 +40,7 @@ protocol PresenterToInteractorSearchProtocol {
     var presenter: InteractorToPresenterSearchProtocol? { get set }
     
     func fetchSearch(_ query: String, page: Int)
+    func fetchRandomWords()
 }
 
 
@@ -47,6 +50,7 @@ protocol InteractorToPresenterSearchProtocol {
     func setSearchResult(data: SearchResult)
     func appendSearchResult(data: SearchResult)
     func fetchFailed(error: Error?)
+    func appendRandomWords(wordType: PartOfSpeech, word: String?)
 }
 
 

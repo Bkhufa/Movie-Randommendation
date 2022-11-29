@@ -15,26 +15,20 @@ final class SearchViewController: UIViewController {
     // MARK: - Properties
     unowned var presenter: ViewToPresenterSearchProtocol
     private let searchController: UISearchController
+    private let disposeBag = DisposeBag()
     
     lazy var nounButton: WordButton = {
-        let button = WordButton(wordType: "Noun") {
-            print("lalalala")
-        }
+        let button = WordButton(wordType: .noun)
         return button
     }()
     
-    
     lazy var verbButton: WordButton = {
-        let button = WordButton(wordType: "Verb") {
-            print("lalalala")
-        }
+        let button = WordButton(wordType: .verb)
         return button
     }()
     
     lazy var adjectiveButton: WordButton = {
-        let button = WordButton(wordType: "Adjective") {
-            print("lalalala")
-        }
+        let button = WordButton(wordType: .adjective)
         return button
     }()
     
@@ -69,7 +63,9 @@ final class SearchViewController: UIViewController {
         super.viewDidLoad()
         setupViewUI()
         setupSearch()
+        setupRx()
         searchController.searchBar.text = "Transformers"
+        presenter.fetchRandomWords()
     }
     
     private func setupViewUI() {
@@ -96,6 +92,23 @@ final class SearchViewController: UIViewController {
     private func setupSearch() {
         searchController.searchResultsUpdater = self
         navigationItem.searchController = searchController
+    }
+    
+    private func setupRx() {
+        presenter.randomWords.subscribe { [weak self] (dictionary: [PartOfSpeech: String]) in
+            DispatchQueue.main.async {
+                if let nounWord = dictionary[PartOfSpeech.noun] {
+                    self?.nounButton.setWord(word: nounWord)
+                }
+                if let verbWord = dictionary[PartOfSpeech.verb] {
+                    self?.verbButton.setWord(word: verbWord)
+                }
+                if let adjWord = dictionary[PartOfSpeech.adjective] {
+                    self?.adjectiveButton.setWord(word: adjWord)
+                }
+            }
+        }
+        .disposed(by: disposeBag)
     }
 }
 
