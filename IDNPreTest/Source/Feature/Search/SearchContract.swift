@@ -27,6 +27,7 @@ protocol ViewToPresenterSearchProtocol: AnyObject {
     var resultCount: Observable<String> { get }
     
     func setSearchQuery(query: String)
+    func displayMoreMovie(displayIndex: Int)
 }
 
 
@@ -34,13 +35,16 @@ protocol ViewToPresenterSearchProtocol: AnyObject {
 protocol PresenterToInteractorSearchProtocol {
     
     var presenter: InteractorToPresenterSearchProtocol? { get set }
-    func fetchSearch(_ query: String)
+    
+    func fetchSearch(_ query: String, page: Int)
 }
 
 
 // MARK: Interactor Output (Interactor -> Presenter)
 protocol InteractorToPresenterSearchProtocol {
+    
     func setSearchResult(data: SearchResult)
+    func appendSearchResult(data: SearchResult)
 }
 
 

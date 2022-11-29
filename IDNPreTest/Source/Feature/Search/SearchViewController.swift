@@ -57,7 +57,7 @@ extension SearchViewController: UISearchResultsUpdating {
     }
 }
 
-
+//TODO: Move this somewhere else
 class SearchResultViewController: UIViewController {
     
     unowned var presenter: ViewToPresenterSearchProtocol
@@ -65,6 +65,9 @@ class SearchResultViewController: UIViewController {
     
     lazy var movieCollectionView: MovieCollectionViewComponent = {
         let view = MovieCollectionViewComponent(data: presenter.movieData)
+        view.setWillDisplayCell { [weak self] indexPath in
+            self?.presenter.displayMoreMovie(displayIndex: indexPath.row)
+        }
         return view
     }()
     

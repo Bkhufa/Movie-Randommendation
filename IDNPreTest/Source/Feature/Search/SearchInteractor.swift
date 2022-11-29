@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-class SearchInteractor: PresenterToInteractorSearchProtocol {
+final class SearchInteractor: PresenterToInteractorSearchProtocol {
     
     // MARK: Properties
     var presenter: InteractorToPresenterSearchProtocol?
@@ -21,16 +21,19 @@ class SearchInteractor: PresenterToInteractorSearchProtocol {
         self.service = service
     }
     
-    func fetchSearch(_ query: String) {
+    func fetchSearch(_ query: String, page: Int = 1) {
         if query.trimmingCharacters(in: .whitespaces).isEmpty {
             return
         }
-        let usecase = SearchUseCase(query: query, page: 1)
+        let usecase = SearchUseCase(query: query, page: page)
         service.request(usecase)
             .observe(on: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
             .subscribe(onNext: { [weak self] response in
-                print("lala response")
-                self?.presenter?.setSearchResult(data: response)
+                if page == 1 {
+                    self?.presenter?.setSearchResult(data: response)
+                    return
+                }
+                self?.presenter?.appendSearchResult(data: response)
             }, onError: { error in
                 print("lala error", error)
             })

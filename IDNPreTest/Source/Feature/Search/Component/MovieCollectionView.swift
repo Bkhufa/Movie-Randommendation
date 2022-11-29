@@ -83,9 +83,5 @@ extension MovieCollectionViewComponent: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         willDisplayCell?(indexPath)
-        
-        //        if indexPath.row == viewModel.catDataCount - 2 {
-        //            viewModel.fetchMoreCat(limit: 10)
-        //        }
     }
 }

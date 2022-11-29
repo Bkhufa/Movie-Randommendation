@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import RxRelay
 
-class SearchPresenter: ViewToPresenterSearchProtocol {
+final class SearchPresenter: ViewToPresenterSearchProtocol {
 
     // MARK: Properties
     var view: PresenterToViewSearchProtocol?
@@ -29,28 +29,35 @@ class SearchPresenter: ViewToPresenterSearchProtocol {
         }
     }
     
+    private let _searchQuery: BehaviorRelay<String> = .init(value: "")
+    private let _searchResult: BehaviorRelay<SearchResult> = .init(value: SearchResult(movies: [], totalResults: "0"))
     private let disposeBag = DisposeBag()
-    private let _searchQuery: PublishRelay<String> = .init()
-    private let _searchResult: PublishRelay<SearchResult> = .init()
+    private var currentPage: Int = 1
     
     init() {
-        setupRx()
+        subscribeToSearchQuery()
     }
     
     func setSearchQuery(query: String) {
         _searchQuery.accept(query)
     }
     
-    private func setupRx() {
+    func displayMoreMovie(displayIndex: Int) {
+        if displayIndex == _searchResult.value.movies.count - 2 {
+            interactor?.fetchSearch(_searchQuery.value, page: currentPage)
+            currentPage += 1
+        }
+    }
+    
+    private func subscribeToSearchQuery() {
         _searchQuery
             .distinctUntilChanged()
             .skip(1)
             .throttle(.milliseconds(500), scheduler: MainScheduler.asyncInstance)
             .subscribe { [weak self] query in
-                self?.interactor?.fetchSearch(query)
+                self?.interactor?.fetchSearch(query, page: 1)
             }
             .disposed(by: disposeBag)
-
     }
 }
 
@@ -58,5 +65,11 @@ extension SearchPresenter: InteractorToPresenterSearchProtocol {
     
     func setSearchResult(data: SearchResult) {
         _searchResult.accept(data)
+    }
+    
+    func appendSearchResult(data: SearchResult) {
+        let appendedMovies = _searchResult.value.movies + data.movies
+        let searchResult = SearchResult(movies: appendedMovies, totalResults: _searchResult.value.totalResults)
+        _searchResult.accept(searchResult)
     }
 }
