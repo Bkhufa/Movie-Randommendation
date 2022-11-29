@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import RxSwift
 
-class SearchResultViewController: UIViewController {
+final class SearchResultViewController: UIViewController {
     
     unowned var presenter: ViewToPresenterSearchProtocol
     let disposeBag = DisposeBag()

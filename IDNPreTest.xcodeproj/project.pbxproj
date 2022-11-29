@@ -10,6 +10,7 @@
 		E35B3870293612AD007FD203 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E35B386F293612AD007FD203 /* Kingfisher */; };
 		E35B3872293625D0007FD203 /* SearchUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35B3871293625D0007FD203 /* SearchUsecase.swift */; };
 		E36B2F5E293674740048711E /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B2F5D293674740048711E /* SearchResultViewController.swift */; };
+		E36B2F622936995A0048711E /* WordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B2F612936995A0048711E /* WordButton.swift */; };
 		E37445522934909F00ABBA5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37445512934909F00ABBA5E /* AppDelegate.swift */; };
 		E374455C2934909F00ABBA5E /* IDNPreTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E374455A2934909F00ABBA5E /* IDNPreTest.xcdatamodeld */; };
 		E374455E293490A200ABBA5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E374455D293490A200ABBA5E /* Assets.xcassets */; };
@@ -55,6 +56,7 @@
 /* Begin PBXFileReference section */
 		E35B3871293625D0007FD203 /* SearchUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUsecase.swift; sourceTree = "<group>"; };
 		E36B2F5D293674740048711E /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
+		E36B2F612936995A0048711E /* WordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordButton.swift; sourceTree = "<group>"; };
 		E374454E2934909F00ABBA5E /* IDNPreTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IDNPreTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E37445512934909F00ABBA5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E374455B2934909F00ABBA5E /* IDNPreTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = IDNPreTest.xcdatamodel; sourceTree = "<group>"; };
@@ -124,6 +126,14 @@
 				E374459329349CA400ABBA5E /* UseCaseInterface.swift */,
 			);
 			path = UseCase;
+			sourceTree = "<group>";
+		};
+		E36B2F60293692250048711E /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				E36B2F612936995A0048711E /* WordButton.swift */,
+			);
+			path = Button;
 			sourceTree = "<group>";
 		};
 		E37445452934909F00ABBA5E = {
@@ -221,6 +231,7 @@
 		E374459A2934EFF300ABBA5E /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				E36B2F60293692250048711E /* Button */,
 				E3E6927929350E3B0045E1DE /* CollectionView */,
 				E374459C2934F0F300ABBA5E /* SearchContract.swift */,
 				E374459D2934F0F300ABBA5E /* SearchPresenter.swift */,
@@ -428,6 +439,7 @@
 				E37445A52934F0F300ABBA5E /* SearchInteractor.swift in Sources */,
 				E374459429349CA400ABBA5E /* UseCaseInterface.swift in Sources */,
 				E37445A32934F0F300ABBA5E /* SearchRouter.swift in Sources */,
+				E36B2F622936995A0048711E /* WordButton.swift in Sources */,
 				E374455C2934909F00ABBA5E /* IDNPreTest.xcdatamodeld in Sources */,
 				E37445522934909F00ABBA5E /* AppDelegate.swift in Sources */,
 				E374459229349C2700ABBA5E /* ErrorResponse.swift in Sources */,
